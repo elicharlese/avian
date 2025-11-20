@@ -5,15 +5,15 @@ import Link from "next/link"
 
 export function PricingPackages() {
   return (
-    <section id="pricing" className="w-full bg-white py-12 md:py-24 lg:py-32">
+    <section id="pricing" className="w-full bg-background pricing-pattern py-8 md:py-16 lg:py-20">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="mx-auto mb-8 max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Choose Your Sky Experience</h2>
           <p className="mt-4 text-xl text-muted-foreground">
             Select the package that best fits your travel needs and budget
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-1 md:grid-cols-2 lg:grid-cols-3">
           <PricingCard
             title="Day Flyer"
             price="499"
@@ -84,27 +84,31 @@ function PricingCard({
   highlighted?: boolean
 }) {
   return (
-    <Card className={`flex flex-col ${highlighted ? "border-primary shadow-lg" : ""}`}>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-        <div className="mt-4">
-          <span className="text-4xl font-bold">${price}</span>
-          <span className="text-muted-foreground"> /person</span>
+    <Card
+      className={`flex flex-col w-full bg-card/80 backdrop-blur-lg border border-border/60 shadow-md ${
+        highlighted ? "border-primary shadow-xl" : ""
+      }`}
+    >
+      <CardHeader className="p-4 pb-2">
+        <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+        <CardDescription className="text-sm">{description}</CardDescription>
+        <div className="mt-2">
+          <span className="text-3xl font-bold">${price}</span>
+          <span className="text-sm text-muted-foreground"> /person</span>
         </div>
       </CardHeader>
-      <CardContent className="flex-1">
-        <ul className="space-y-2">
+      <CardContent className="flex-1 p-4 pt-0">
+        <ul className="space-y-1.5 text-sm">
           {features.map((feature, i) => (
             <li key={i} className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-primary" />
+              <Check className="h-4 w-4 text-primary" />
               <span>{feature}</span>
             </li>
           ))}
         </ul>
       </CardContent>
-      <CardFooter>
-        <Button className={`w-full ${highlighted ? "bg-primary" : ""}`} asChild>
+      <CardFooter className="p-4 pt-0">
+        <Button className={`w-full text-sm ${highlighted ? "bg-primary" : ""}`} asChild>
           <Link href={`/book?package=${packageType}`}>{buttonText}</Link>
         </Button>
       </CardFooter>

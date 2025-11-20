@@ -3,7 +3,7 @@ import { Star } from "lucide-react"
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="w-full bg-white py-12 md:py-24 lg:py-32">
+    <section id="testimonials" className="w-full bg-background py-12 md:py-24 lg:py-32">
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">What Our Flyers Say</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +61,12 @@ function TestimonialCard({
       <p className="mb-4 flex-1 italic">"{quote}"</p>
       <div className="flex">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className={`h-5 w-5 ${i < rating ? "fill-primary text-primary" : "text-gray-300"}`} />
+          <Star
+            key={i}
+            className={`h-5 w-5 ${
+              i < rating ? "fill-primary text-primary" : "text-muted-foreground/40"
+            }`}
+          />
         ))}
       </div>
     </div>

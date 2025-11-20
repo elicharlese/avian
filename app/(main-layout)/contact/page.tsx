@@ -57,124 +57,133 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="w-full bg-white py-16 md:py-24">
+      <section className="w-full bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid gap-12 md:grid-cols-2">
+          <div className="grid gap-10 lg:grid-cols-[6fr_5fr]">
             {/* Contact Form */}
-            <div>
-              <h2 className="mb-6 text-2xl font-bold">Send Us a Message</h2>
-              {isSubmitted ? (
-                <Card className="p-6 text-center">
-                  <h3 className="mb-2 text-xl font-bold text-green-600">Thank You!</h3>
-                  <p>Your message has been sent successfully. We'll get back to you shortly.</p>
-                  <Button className="mt-4" onClick={() => setIsSubmitted(false)}>
-                    Send Another Message
-                  </Button>
-                </Card>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Your Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="John Doe"
-                    />
+            <Card className="h-full border border-border/60 bg-card">
+              <div className="px-4 pb-4 pt-6 md:px-6 md:pb-6 md:pt-8">
+                <h2 className="mb-6 text-2xl font-bold">Send Us a Message</h2>
+                {isSubmitted ? (
+                  <div className="text-center">
+                    <h3 className="mb-2 text-xl font-bold text-green-600">Thank You!</h3>
+                    <p>Your message has been sent successfully. We'll get back to you shortly.</p>
+                    <Button className="mt-4" onClick={() => setIsSubmitted(false)}>
+                      Send Another Message
+                    </Button>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formState.subject}
-                      onChange={handleChange}
-                      required
-                      placeholder="Booking Inquiry"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="I'm interested in booking a Sky Sleeper package..."
-                      rows={5}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              )}
-            </div>
-
-            {/* Contact Information */}
-            <div>
-              <h2 className="mb-6 text-2xl font-bold">Contact Information</h2>
-              <div className="space-y-6">
-                <ContactInfo icon={<Mail />} title="Email Us">
-                  <a href="mailto:info@aviantravel.com" className="text-primary hover:underline">
-                    info@aviantravel.com
-                  </a>
-                </ContactInfo>
-
-                <ContactInfo icon={<Phone />} title="Call Us">
-                  <a href="tel:+15551234567" className="text-primary hover:underline">
-                    +1 (555) 123-4567
-                  </a>
-                </ContactInfo>
-
-                <ContactInfo icon={<MapPin />} title="Visit Us">
-                  <address className="not-italic">
-                    AVIAN Headquarters
-                    <br />
-                    1234 Sky Avenue
-                    <br />
-                    Cloud City, CA 90210
-                  </address>
-                </ContactInfo>
-
-                <ContactInfo icon={<Clock />} title="Business Hours">
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p>Saturday: 10:00 AM - 4:00 PM</p>
-                  <p>Sunday: Closed</p>
-                </ContactInfo>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Your Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formState.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="subject">Subject</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formState.subject}
+                        onChange={handleChange}
+                        required
+                        placeholder="Booking Inquiry"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formState.message}
+                        onChange={handleChange}
+                        required
+                        placeholder="I'm interested in booking a Sky Sleeper package..."
+                        rows={5}
+                      />
+                    </div>
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+                )}
               </div>
+            </Card>
 
-              {/* Map */}
-              <div className="mt-8">
-                <h3 className="mb-4 text-xl font-bold">Our Location</h3>
-                <div className="h-[300px] w-full overflow-hidden rounded-lg bg-gray-200">
-                  <div className="flex h-full items-center justify-center">
-                    <p className="text-muted-foreground">Map placeholder - would integrate Google Maps here</p>
+            {/* Contact Information + Location */}
+            <div className="space-y-6">
+              <Card className="border border-border/60 bg-card">
+                <div className="px-4 pb-6 pt-6 md:px-6 md:pb-8 md:pt-8">
+                  <h2 className="mb-6 text-2xl font-bold">Contact Information</h2>
+                  <div className="space-y-6">
+                    <ContactInfo icon={<Mail />} title="Email Us">
+                      <a href="mailto:info@aviantravel.com" className="text-primary hover:underline">
+                        info@aviantravel.com
+                      </a>
+                    </ContactInfo>
+
+                    <ContactInfo icon={<Phone />} title="Call Us">
+                      <a href="tel:+15551234567" className="text-primary hover:underline">
+                        +1 (555) 123-4567
+                      </a>
+                    </ContactInfo>
+
+                    <ContactInfo icon={<MapPin />} title="Visit Us">
+                      <address className="not-italic">
+                        AVIAN Headquarters
+                        <br />
+                        1234 Sky Avenue
+                        <br />
+                        Cloud City, CA 90210
+                      </address>
+                    </ContactInfo>
+
+                    <ContactInfo icon={<Clock />} title="Business Hours">
+                      <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                      <p>Saturday: 10:00 AM - 4:00 PM</p>
+                      <p>Sunday: Closed</p>
+                    </ContactInfo>
                   </div>
                 </div>
-              </div>
+              </Card>
+
+              <Card className="border border-border/60 bg-card">
+                <div className="px-4 pb-6 pt-6 md:px-6 md:pb-8 md:pt-6">
+                  <h3 className="mb-4 text-xl font-bold">Our Location</h3>
+                  <div className="h-[260px] w-full overflow-hidden rounded-lg bg-muted">
+                    <div className="flex h-full items-center justify-center">
+                      <p className="text-muted-foreground">
+                        Map placeholder - we&apos;ll integrate an interactive map here.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-gray-50 py-16 md:py-24">
+      <section className="w-full bg-muted py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-12 text-3xl font-bold">Frequently Asked Questions</h2>
           <div className="mx-auto max-w-3xl text-left">

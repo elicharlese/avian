@@ -3,7 +3,7 @@ import { FuelIcon as GasPump, Plane, Hotel, Users } from "lucide-react"
 
 export function FeatureSection() {
   return (
-    <section id="features" className="w-full bg-white py-12 md:py-24 lg:py-32">
+    <section id="features" className="w-full bg-background py-12 md:py-24 lg:py-32">
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
           Experience Flight Like Never Before

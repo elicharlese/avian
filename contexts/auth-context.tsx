@@ -40,7 +40,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [authType, setAuthType] = useState<AuthType>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isDemoMode, setIsDemoMode] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(false)
 
   // Initialize auth state from cookies/localStorage
   useEffect(() => {
@@ -55,8 +54,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setAuthType(storedAuthType)
       setIsAuthenticated(true)
     }
-
-    setIsInitialized(true)
   }, [])
 
   const login = (userData: UserType, type: AuthType) => {
@@ -66,7 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Store in localStorage for persistence
     localStorage.setItem("avian-user", JSON.stringify(userData))
-    localStorage.setItem("avian-auth-type", type)
+    localStorage.setItem("avian-auth-type", type ?? "")
 
     // Set auth cookie for middleware
     setCookie("avian-auth", "true", 7)
@@ -127,11 +124,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem("avian-auth-type")
       }
     }
-  }
-
-  // Don't render children until we've initialized auth state
-  if (!isInitialized) {
-    return null
   }
 
   return (

@@ -14,6 +14,13 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .pricing-pattern {
+    background-image:
+      radial-gradient(circle at 0 0, hsl(var(--primary) / 0.12), transparent 55%),
+      radial-gradient(circle at 100% 0, hsl(var(--primary) / 0.08), transparent 55%),
+      radial-gradient(circle at 0 100%, hsl(var(--accent) / 0.08), transparent 55%);
+  }
 }
 
 @layer base {
